@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>action</key>
+	<false/>
+	<key>category</key>
+	<string>SCRIPTS</string>
+	<key>command</key>
+	<string>#Desc:	Determine website security with sucuri.net
+#Use:	sucuri &lt;host&gt;
+#Ex:	sucuri alfredapp.com
+
+php -f sucuri.php -- "{query}"</string>
+	<key>escapequery</key>
+	<true/>
+	<key>escapequerybackquotes</key>
+	<true/>
+	<key>escapequeryquotes</key>
+	<true/>
+	<key>growloutput</key>
+	<true/>
+	<key>growloutputsticky</key>
+	<true/>
+	<key>keyword</key>
+	<string>sucuri</string>
+	<key>logging</key>
+	<false/>
+	<key>silent</key>
+	<true/>
+	<key>subtitle</key>
+	<string>Check your site is secure.</string>
+	<key>title</key>
+	<string>Sucuri site check?</string>
+</dict>
+</plist>
