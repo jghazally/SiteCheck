@@ -1,21 +1,19 @@
-Sucuri Sitecheck an Alfred App Extension
-================================
+# Sucuri Sitecheck an Alfred App Extension
+
 
 An Alfred App Extension to check your site is secure and MalWare free
 
-Installation
--------------------------
+## Installation
 
 Clone this repo into your Aplfred Extensions Directory
-<pre>
-	~/Library/Application Support/Alfred/extensions/scripts/
-</pre>
 
-Usage
--------------------------
+	~/Library/Application Support/Alfred/extensions/scripts/
+
+
+## Usage
 
 Once installed, open Alfred and type in sucuri followed by the site you want to check i.e:
-<pre>
+
 	sucuri github.com
-</pre>
+
 You will get a growl notification stating whether sucuri found the site you queried was clean or not.
