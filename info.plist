@@ -31,6 +31,6 @@ php -f sucuri.php -- "{query}"</string>
 	<key>subtitle</key>
 	<string>Check your site is secure.</string>
 	<key>title</key>
-	<string>Sucuri site check?</string>
+	<string>Sucuri SiteCheck</string>
 </dict>
 </plist>

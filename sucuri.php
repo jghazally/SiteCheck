@@ -3,9 +3,9 @@
 /* -----------------------------------
 	Script: 	Sucuri Scan
 	Author: 	Jeffry Ghazally
-	Usage:		sitecheck <host>
+	Usage:		Sucuri <host>
 	Desc:		Uses the website sucuri.com
-				to determine if a site is up. Returns status
+				to determine if a site is compromised or clean and returns status
 				via Growl.
 	Updated:	7/8/11
 ----------------------------------- */

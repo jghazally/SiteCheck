@@ -1,7 +1,7 @@
-# Sucuri Sitecheck an Alfred App Extension
+# Sucuri SiteCheck an Alfred App Extension
 
 
-An Alfred App Extension to check your site is secure and MalWare free
+An Alfred App Extension to check your site is secure and MalWare free using the free Sucuri SiteCheck scanner.
 
 ## Installation
 
