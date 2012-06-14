@@ -12,9 +12,13 @@
 
 //Pull hostname off of the command line
 $q=$argv[1];
-
+if (isset($argv[2])) {
+	$site = explode('=', $argv[1]);
+	echo "http://sitecheck.sucuri.net/results/{$site[1]}";
+	die;
+}
 //Retrieve status from isup.me
-$url 		= "http://sitecheck.sucuri.net/results/$q";
+$url 		= "http://sitecheck.sucuri.net/scanner/?scan={$q}&serialized&alfred";
 $crl 		= curl_init();
 $timeout 	= 10;
 curl_setopt ($crl, CURLOPT_URL, $url);
@@ -23,9 +27,20 @@ curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
 $def 		= curl_exec($crl);
 curl_close  ($crl);
 
-//Search the result text to determine the status
-$find = strpos($def, "Verified Clean");
+$def = unserialize($def);
 
-//Return status
-if ($find) { echo "The site ".ucfirst($q)." is clean."; }
-else { echo "The site ".ucfirst($q)." is compromised"; }
+$output   = 'Site: ' . $q . "\r\n";
+$warnings = array();
+$status   = '';
+
+if ( isset($def['WEBAPP']['WARN'])) {
+	$status = 'Sucuri Found Errors >';
+	foreach ($def['WEBAPP']['WARN'] as $warn) {
+		$warnings[] = $warn;
+	}
+} else {
+	$status = 'Your site is clean';
+}
+
+$warnings = implode(' | ', $warnings);
+echo $output . $status . $warnings;

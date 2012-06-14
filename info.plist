@@ -11,7 +11,8 @@
 #Use:	sucuri &lt;host&gt;
 #Ex:	sucuri alfredapp.com
 
-php -f sucuri.php -- "{query}"</string>
+php -f sucuri.php -- "{query}"
+php -f sucuri.php q={query} link=true | pbcopy</string>
 	<key>escapequery</key>
 	<true/>
 	<key>escapequerybackquotes</key>
@@ -29,7 +30,7 @@ php -f sucuri.php -- "{query}"</string>
 	<key>silent</key>
 	<true/>
 	<key>subtitle</key>
-	<string>Check your site is secure.</string>
+	<string>Scan your site to make sure its secure.</string>
 	<key>title</key>
 	<string>Sucuri SiteCheck</string>
 </dict>
