@@ -33,13 +33,24 @@ $output   = 'Site: ' . $q . "\r\n";
 $warnings = array();
 $status   = '';
 
-if ( isset($def['WEBAPP']['WARN'])) {
+if ( isset($def['WEBAPP']['WARN']) ) {
 	$status = 'Sucuri Found Errors >';
 	foreach ($def['WEBAPP']['WARN'] as $warn) {
-		$warnings[] = $warn;
+		foreach ((array)$warn as $w) {
+			$warnings[] = $w;
+		}
 	}
 } else {
 	$status = 'Your site is clean';
+}
+
+if ( isset($def['BLACKLIST']['WARN']) ) {
+	$status = 'Sucuri Found Errors >';
+	foreach ($def['BLACKLIST']['WARN'] as $warn) {
+		foreach ((array)$warn as $w) {
+			$warnings[] = $w;
+		}
+	}
 }
 
 $warnings = implode(' | ', $warnings);
