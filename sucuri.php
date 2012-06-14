@@ -25,8 +25,8 @@ curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
 $def 		= curl_exec($crl);
 curl_close  ($crl);
 
-$def = unserialize($def);
-$output   = "Site: {$q} \r\n";;
+$def      = unserialize($def);
+$output   = "Site: {$q} \r\n";
 $warnings = '';
 $status   = '';
 
@@ -43,7 +43,7 @@ foreach ( (array)$def as $node ) {
 }
 
 if ( !empty($warnings) ) {
-	$status = 'Sucuri Found Errors > ';
+	$status   = 'Sucuri Found Errors > ';
 	$warnings = implode(' | ', $warnings);
 } else {
 	$status = 'Your interwebs is secure';
