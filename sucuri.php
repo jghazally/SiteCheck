@@ -1,13 +1,13 @@
 <?php
 
 /* -----------------------------------
-	Script: 	Sucuri Scan
+	Script: 	Sucuri SiteCheck Scan
 	Author: 	Jeffry Ghazally
 	Usage:		Sucuri <host>
-	Desc:		Uses the website sucuri.com
-				to determine if a site is compromised or clean and returns status
+	Desc:		Uses the website sitecheck.sucuri.net
+				to determine if a site is compromised or clean and returns a status
 				via Growl.
-	Updated:	7/8/11
+	Updated:	14/6/12
 ----------------------------------- */
 
 //Pull hostname off of the command line
