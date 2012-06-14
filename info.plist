@@ -12,7 +12,7 @@
 #Ex:	sucuri alfredapp.com
 
 php -f sucuri.php -- "{query}"
-php -f sucuri.php q={query} link=true | pbcopy</string>
+echo "http://sitecheck.sucuri.net/results/{query}" | tr -d '\n' | pbcopy</string>
 	<key>escapequery</key>
 	<true/>
 	<key>escapequerybackquotes</key>

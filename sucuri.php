@@ -12,15 +12,13 @@
 
 //Pull hostname off of the command line
 $q=$argv[1];
-if (isset($argv[2])) {
-	$site = explode('=', $argv[1]);
-	echo "http://sitecheck.sucuri.net/results/{$site[1]}";
-	die;
-}
+
 //Retrieve status from isup.me
 $url 		= "http://sitecheck.sucuri.net/scanner/?scan={$q}&serialized&alfred";
-$crl 		= curl_init();
 $timeout 	= 10;
+
+//Request Curl
+$crl 		= curl_init();
 curl_setopt ($crl, CURLOPT_URL, $url);
 curl_setopt ($crl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt ($crl, CURLOPT_CONNECTTIMEOUT, $timeout);
@@ -28,30 +26,28 @@ $def 		= curl_exec($crl);
 curl_close  ($crl);
 
 $def = unserialize($def);
-
-$output   = 'Site: ' . $q . "\r\n";
-$warnings = array();
+$output   = "Site: {$q} \r\n";;
+$warnings = '';
 $status   = '';
 
-if ( isset($def['WEBAPP']['WARN']) ) {
-	$status = 'Sucuri Found Errors >';
-	foreach ($def['WEBAPP']['WARN'] as $warn) {
-		foreach ((array)$warn as $w) {
-			$warnings[] = $w;
+// Loop through the array and find all warn
+foreach ( (array)$def as $node ) {
+	if ( isset($node['WARN']) ) {
+		foreach ((array)$node['WARN'] as $warn) {
+			// loop through each warn array
+			foreach ((array)$warn as $w) {
+				$warnings[] = $w;
+			}
 		}
 	}
+}
+
+if ( !empty($warnings) ) {
+	$status = 'Sucuri Found Errors > ';
+	$warnings = implode(' | ', $warnings);
 } else {
-	$status = 'Your site is clean';
+	$status = 'Your interwebs is secure';
 }
 
-if ( isset($def['BLACKLIST']['WARN']) ) {
-	$status = 'Sucuri Found Errors >';
-	foreach ($def['BLACKLIST']['WARN'] as $warn) {
-		foreach ((array)$warn as $w) {
-			$warnings[] = $w;
-		}
-	}
-}
 
-$warnings = implode(' | ', $warnings);
 echo $output . $status . $warnings;
