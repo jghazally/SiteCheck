@@ -30,6 +30,11 @@ $output   = "Site: {$q} \r\n";
 $warnings = '';
 $status   = '';
 
+if ( empty($def) ) {
+	echo "{$q } : Invalid web site provided.";
+	die;
+}
+
 // Loop through the array and find all warn
 foreach ( (array)$def as $node ) {
 	if ( isset($node['WARN']) ) {
@@ -43,8 +48,8 @@ foreach ( (array)$def as $node ) {
 }
 
 if ( !empty($warnings) ) {
-	$status   = 'Sucuri Found Errors > ';
-	$warnings = implode(' | ', $warnings);
+	$status   = "Sucuri Found Errors : \r\n";
+	$warnings = implode(" \n\r ", $warnings);
 } else {
 	$status = 'Your interwebs is secure';
 }
